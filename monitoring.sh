@@ -1,7 +1,7 @@
 #!/bin/bash
 echo  "#Architecture: $(uname -a)"
 echo  "#CPU physical : $(lscpu  | grep Socket | awk '{print $2}')"
-echo  "#vCPU : $(cat  /proc/cpuinfo | grep 'cpu cores' | awk ' NR == 1 {print $4}')"
+echo  "#vCPU : $(lscpu  | grep vcpu | awk '{print $2}')"
 fram=$(free -m | awk 'NR == 2 {print $2}')
 uram=$(free -m | awk 'NR == 2 {print $3}')
 pram=$(free | awk 'NR == 2 {printf("%.2f"), $3/$2*100}')
